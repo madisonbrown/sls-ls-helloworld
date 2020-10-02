@@ -1,0 +1,19 @@
+{
+  "name": "sls-ls-helloworld",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/madisonbrown/sls-ls-helloworld",
+  "author": "Madison Brown",
+  "license": "MIT",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "deploy": "cd myService && serverless deploy --stage local --force",
+    "invoke": "cd myService && serverless invoke -f hello --stage local"
+  },
+  "devDependencies": {
+    "serverless-localstack": "^0.4.27"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.765.0"
+  }
+}
