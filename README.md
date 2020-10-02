@@ -9,9 +9,9 @@ Ensure that the following global dependencies are installed:
 Then, run:
 - `yarn install`, to install local dependencies
 - `yarn start`, to start the LocalStack Docker daemon
-- `yarn deploy`, to deploy the Serverless service to the local AWS environment
+- `yarn deploy`, to deploy the Serverless service to the local AWS environment (noting the returned HTTP endpoint)
 - `yarn invoke`, to invoke the `hello` lambda function via the CLI
-- `GET http://localhost:4566/restapis/${API_ID}/local/_user_request_/hello`, to invoke via HTTP.
+- `GET ${ENDPOINT}/hello`, to invoke via HTTP.
 
 # Notes
 - `./docker-compose.yml` is the default configuration for running Dockerized Localstack, taken from the [GitHub repository](https://github.com/localstack/localstack).
