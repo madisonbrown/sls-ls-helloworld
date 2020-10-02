@@ -25,4 +25,3 @@ Then, run:
 # Issues
 - No persistence after stopping LocalStack daemon
 - Severless won't overwrite previous deployments
-- Requests are sometimes very slow
