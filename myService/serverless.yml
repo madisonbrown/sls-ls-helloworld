@@ -23,8 +23,10 @@ custom:
 provider:
   name: aws
   runtime: nodejs12.x
+  # set AWS host to Localstack daemon
   environment:
     AWS_HOST: http://${env:DOCKER_GATEWAY_HOST, 'host.docker.internal'}:4566
+  # <-- set AWS host to Localstack daemon
 
 functions:
   hello:
