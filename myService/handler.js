@@ -4,7 +4,7 @@ const { randomBytes } = require('crypto');
 const { S3 } = require('aws-sdk');
 
 const s3 = new S3({ 
-  endpoint: 'http://172.17.0.1:4566', 
+  endpoint: process.env.AWS_HOST, 
   accessKeyId: 'key', 
   secretAccessKey: 'secret', 
   region: 'us-east-1',

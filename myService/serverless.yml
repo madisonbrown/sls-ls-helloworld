@@ -23,6 +23,8 @@ custom:
 provider:
   name: aws
   runtime: nodejs12.x
+  environment:
+    AWS_HOST: http://${env:DOCKER_GATEWAY_HOST, 'host.docker.internal'}:4566
 
 functions:
   hello:
