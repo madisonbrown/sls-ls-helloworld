@@ -1,7 +1,12 @@
 'use strict';
 
 const { randomBytes } = require('crypto');
+const { Pool } = require('pg');
 const { S3 } = require('aws-sdk');
+
+const pool = new Pool({
+  connectionString: process.env.PG_CONN,
+})
 
 const s3 = new S3({ 
   endpoint: process.env.AWS_HOST, 
@@ -13,6 +18,8 @@ const s3 = new S3({
 
 module.exports.hello = async event => {
   try {
+    const { rows: time } = await pool.query('SELECT NOW()');
+
     const bucket = 'files';
     const key = Buffer.from(randomBytes(16)).toString('hex');
 
@@ -27,7 +34,7 @@ module.exports.hello = async event => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify(objects, null, 2)
+      body: JSON.stringify({ time, objects }, null, 2)
     };
   } catch (err) {
     return {

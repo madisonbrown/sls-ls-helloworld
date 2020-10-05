@@ -17,11 +17,10 @@ Then, run:
 - `GET ${ENDPOINT}/hello`, to invoke via HTTP.
 
 # Notes
-- `./docker-compose.yml` is the default configuration for running Dockerized Localstack, taken from the [GitHub repository](https://github.com/localstack/localstack).
+- `./docker-compose.yml` is derived from the default configuration for running Dockerized Localstack, taken from the [GitHub repository](https://github.com/localstack/localstack). A Postgres container has been added and data persistence enabled.
 - `./myService` is a default Serverless service created by running `sls create --template aws-nodejs --path myService`. See [here](https://www.serverless.com/framework/docs/providers/aws/examples/hello-world/node/).
 - The `serverless-localstack` plugin is used to bridge these two applications. A section has been added to the default Serverless YAML file, taken from the [documentation](https://github.com/localstack/serverless-localstack), in order to configure this plugin (see `./myService/serverless.yml:23`).
-- The handler has been updated to interact with Localstack S3 as a proof of concept.
+- The handler has been updated to interact with Localstack S3 and the containerized Postgres instance as a proof of concept.
 
 # Issues
-- No persistence after stopping LocalStack daemon
-- Severless won't overwrite previous deployments
+- Severless won't overwrite previous deployments. As a workaround, `serverless deploy function` is used, but this only works for code changes, not configuration changes that would affect the CloudFormation files.

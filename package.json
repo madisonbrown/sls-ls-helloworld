@@ -7,13 +7,15 @@
   "license": "MIT",
   "scripts": {
     "start": "docker-compose up -d",
-    "deploy": "cd myService && serverless deploy --stage local --force",
+    "deploy": "cd myService; serverless deploy function -f hello --stage local || serverless deploy --stage local",
     "invoke": "cd myService && serverless invoke -f hello --stage local"
   },
   "devDependencies": {
-    "serverless-localstack": "^0.4.27"
+    "serverless-localstack": "^0.4.27",
+    "serverless-plugin-include-dependencies": "^4.1.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.765.0"
+    "aws-sdk": "^2.765.0",
+    "pg": "^8.3.3"
   }
 }
